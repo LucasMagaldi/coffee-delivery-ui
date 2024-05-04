@@ -1,3 +1,3 @@
 export const defaultTheme = {
-    primary: 'purple'
-}
+	primary: 'purple'
+};

@@ -1,5 +1,5 @@
-import 'styled-components'
-import { defaultTheme } from '../styles/themes/deafault'
+import 'styled-components';
+import { defaultTheme } from '../styles/themes/deafault';
 
 type ThemeType = typeof defaultTheme
 
