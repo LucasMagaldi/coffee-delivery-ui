@@ -18,8 +18,8 @@ export const DeliveryDetail = styled.div`
     padding: 2rem;
     background: ${props => props.theme['base-card']};
     border-radius: 10px;
-    height: 20rem;
-    width: 52rem;
+    height: 18rem;
+    width: 42rem;
 `
 
 export const DeliveryDetailHeader = styled.div`
@@ -41,3 +41,15 @@ export const DeliveryDetailHeader = styled.div`
     }
 `
 
+export const DeliveryDetailForm = styled.form`
+    margin-top: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    div {
+        display: flex;
+        gap: 0.8rem;
+    }
+`
