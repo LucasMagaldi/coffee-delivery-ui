@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         background: ${props => props.theme.background};
-        color: ${props => props.theme.white};
+        color: ${props => props.theme['base-text']};
     }
 
     body, input, texterea, button {
