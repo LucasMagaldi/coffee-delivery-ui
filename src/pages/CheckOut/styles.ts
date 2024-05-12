@@ -7,6 +7,7 @@ interface PaymentButtonProps {
 export const Container = styled.div`
     padding: 2rem 10rem;
     display: flex;
+    gap: 2rem;
 `
 
 export const OrderSection = styled.div`
@@ -23,7 +24,7 @@ export const DeliveryDetail = styled.div`
     background: ${props => props.theme['base-card']};
     border-radius: 10px;
     height: 18rem;
-    width: 42rem;
+    width: 50rem;
 `
 
 export const Header = styled.div`
@@ -67,7 +68,7 @@ export const PaymentDetail = styled.div`
     background: ${props => props.theme['base-card']};
     border-radius: 10px;
     height: 10rem;
-    width: 42rem;
+    width: 50rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -90,4 +91,21 @@ export const PaymentButton = styled.button<PaymentButtonProps>`
         background: ${props => props.theme['purple-light']};
         border: 1px solid ${props => props.theme['purple-dark']};
     }
+`
+
+export const SelectedCoffeeSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    span {
+        font-weight: bold;
+    }
+`
+
+export const CheckoutDetail = styled.div`
+    padding: 2rem;
+    background: ${props => props.theme['base-card']};
+    border-radius: 10px;
+    height: 28rem;
+    width: 40rem;
 `

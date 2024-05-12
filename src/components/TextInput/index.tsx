@@ -42,13 +42,13 @@ export const TextInput = forwardRef(function TextInput(
 					ref={ref}
 					{...rest}
 				/>
-
+				{error?.message ? (
+					<ErrorMessage role="alert">{error.message}</ErrorMessage>
+				) : null}
 				{optional ? <span>Opcional</span> : null}
 			</Container>
 
-			{error?.message ? (
-				<ErrorMessage role="alert">{error.message}</ErrorMessage>
-			) : null}
+
 		</Box>
 	)
 })

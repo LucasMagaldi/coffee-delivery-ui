@@ -48,6 +48,7 @@ export const Container = styled.label`
 `
 
 export const ErrorMessage = styled.p`
+  font-size: 12px;
   font-weight: 400;
   color: red;
 `

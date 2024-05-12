@@ -1,5 +1,5 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from '@phosphor-icons/react';
-import { Container, DeliveryDetail, Form, FormContent, Header, OrderSection, PaymentButton, PaymentDetail } from './styles';
+import { CheckoutDetail, Container, DeliveryDetail, Form, FormContent, Header, OrderSection, PaymentButton, PaymentDetail, SelectedCoffeeSection } from './styles';
 import { defaultTheme } from '../../styles/themes/deafault';
 
 import z from 'zod'
@@ -19,9 +19,9 @@ type FormInputs = {
 }
 
 const order = z.object({
-	cep: z.string({ invalid_type_error: 'Informe o CEP' }),
+	cep: z.string().min(1, 'Informe o CEP'),
 	street: z.string().min(1, 'Informe a rua'),
-	number: z.string().min(1, 'Informe o número'),
+	number: z.number().min(1, 'Informe o número'),
 	fullAddress: z.string(),
 	neighborhood: z.string().min(1, 'Informe o bairro'),
 	city: z.string().min(1, 'Informe a cidade'),
@@ -40,7 +40,6 @@ export function CheckOut() {
 	} = useForm<FormInputs>({
 		resolver: zodResolver(order)
 	})
-
 	const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
 		console.log(data)
 	}
@@ -50,7 +49,7 @@ export function CheckOut() {
 			<OrderSection>
 				<span>Complete seu pedido</span>
 				<Form onSubmit={handleSubmit(handleOrderCheckout)} id='order'>
-					<DeliveryDetail>
+					<DeliveryDetail >
 						<Header>
 							<MapPinLine color={defaultTheme['yellow-dark']} size={22} />
 							<div>
@@ -60,9 +59,8 @@ export function CheckOut() {
 						</Header>
 						<FormContent>
 							<TextInput placeholder="CEP"
-								type="number"
 								error={errors.cep}
-								{...register('cep', { valueAsNumber: true })} />
+								{...register('cep')} />
 							<TextInput
 								placeholder="Rua"
 								error={errors.street}
@@ -71,8 +69,9 @@ export function CheckOut() {
 							<div>
 								<TextInput
 									placeholder="Número"
+									type='number'
 									error={errors.number}
-									{...register('number')}
+									{...register('number', { valueAsNumber: true })}
 								/>
 
 								<TextInput
@@ -115,15 +114,15 @@ export function CheckOut() {
 						</Header>
 						<FormContent>
 							<div>
-								<PaymentButton type='button' active>
+								<PaymentButton type='button' value='credit' {...register('paymentMethod')}>
 									<CreditCard color={defaultTheme['purple-dark']} size={22} />
 									CARTAO DE CRÉDITO
 								</PaymentButton>
-								<PaymentButton type='button'>
+								<PaymentButton type='button' value='debit' {...register('paymentMethod')}>
 									<Bank color={defaultTheme['purple-dark']} size={22} />
 									CARTAO DE DÉBITO
 								</PaymentButton>
-								<PaymentButton type='button'>
+								<PaymentButton type='button' value='cash' {...register('paymentMethod')}>
 									<Money color={defaultTheme['purple-dark']} size={22} />
 									DINHEIRO
 								</PaymentButton>
@@ -133,6 +132,12 @@ export function CheckOut() {
 				</Form>
 				<button type='submit' form='order'>Submit</button>
 			</OrderSection>
+			<SelectedCoffeeSection>
+				<span>Cafés Selecionados</span>
+				<CheckoutDetail>
+
+				</CheckoutDetail>
+			</SelectedCoffeeSection>
 		</Container>
 	);
 }
