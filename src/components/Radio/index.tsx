@@ -2,7 +2,7 @@ import { InputHTMLAttributes, LegacyRef, forwardRef } from 'react';
 import { Container } from './styles';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-    isSelected: boolean
+	isSelected: boolean
 }
 
 export const Radio = forwardRef(function Radio(

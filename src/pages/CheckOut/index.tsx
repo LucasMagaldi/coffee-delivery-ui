@@ -1,11 +1,12 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from '@phosphor-icons/react';
-import { CheckoutDetail, Container, DeliveryDetail, Form, FormContent, Header, OrderSection, PaymentButton, PaymentDetail, SelectedCoffeeSection } from './styles';
+import { CheckoutDetail, Container, DeliveryDetail, Form, FormContent, Header, OrderSection, PaymentDetail, SelectedCoffeeSection } from './styles';
 import { defaultTheme } from '../../styles/themes/deafault';
 
 import z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TextInput } from '../../components/TextInput';
+import { Radio } from '../../components/Radio';
 
 type FormInputs = {
 	cep: string
@@ -36,10 +37,14 @@ export function CheckOut() {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors }
+		formState: { errors },
+		watch,
 	} = useForm<FormInputs>({
 		resolver: zodResolver(order)
 	})
+
+	const selectedPaymentMethod = watch('paymentMethod')
+
 	const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
 		console.log(data)
 	}
@@ -114,23 +119,22 @@ export function CheckOut() {
 						</Header>
 						<FormContent>
 							<div>
-								<PaymentButton type='button' value='credit' {...register('paymentMethod')}>
+								<Radio isSelected={selectedPaymentMethod === 'credit'} {...register('paymentMethod')} value='credit'>
 									<CreditCard color={defaultTheme['purple-dark']} size={22} />
 									CARTAO DE CRÉDITO
-								</PaymentButton>
-								<PaymentButton type='button' value='debit' {...register('paymentMethod')}>
+								</Radio>
+								<Radio isSelected={selectedPaymentMethod === 'debit'} {...register('paymentMethod')} value='debit'>
 									<Bank color={defaultTheme['purple-dark']} size={22} />
 									CARTAO DE DÉBITO
-								</PaymentButton>
-								<PaymentButton type='button' value='cash' {...register('paymentMethod')}>
+								</Radio>
+								<Radio isSelected={selectedPaymentMethod === 'cash'} {...register('paymentMethod')} value='cash'>
 									<Money color={defaultTheme['purple-dark']} size={22} />
 									DINHEIRO
-								</PaymentButton>
+								</Radio>
 							</div>
 						</FormContent>
 					</PaymentDetail>
 				</Form>
-				<button type='submit' form='order'>Submit</button>
 			</OrderSection>
 			<SelectedCoffeeSection>
 				<span>Cafés Selecionados</span>
