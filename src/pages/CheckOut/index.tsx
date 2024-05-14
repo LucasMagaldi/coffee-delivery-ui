@@ -1,5 +1,5 @@
-import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from '@phosphor-icons/react';
-import { CheckoutDetail, Container, DeliveryDetail, Form, FormContent, Header, OrderSection, PaymentDetail, SelectedCoffeeSection } from './styles';
+import { Bank, CreditCard, CurrencyDollar, Ladder, MapPinLine, Minus, Money, Plus, Trash } from '@phosphor-icons/react';
+import { CheckoutDetail, Container, DeliveryDetail, Form, FormContent, HandleQuantity, HandleQuantityButton, Header, OrderSection, PaymentDetail, RemoveItem, RemoveItemButton, SelectedCoffeeSection, SelectedProduct, SelectedProductDetails } from './styles';
 import { defaultTheme } from '../../styles/themes/deafault';
 
 import z from 'zod'
@@ -7,6 +7,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TextInput } from '../../components/TextInput';
 import { Radio } from '../../components/Radio';
+import expresso from '../../assets/coffee_types/expresso_tradicional.svg'
+import latte from '../../assets/coffee_types/latte.svg'
+
+
 
 type FormInputs = {
 	cep: string
@@ -139,7 +143,50 @@ export function CheckOut() {
 			<SelectedCoffeeSection>
 				<span>Cafés Selecionados</span>
 				<CheckoutDetail>
-
+					<SelectedProduct>
+						<img src={expresso} />
+						<SelectedProductDetails>
+							<span>Expresso Tradicional</span>
+							<div>
+								<HandleQuantity>
+									<button>
+										<Minus size={18} color={defaultTheme['purple-dark']} />
+									</button>
+									1
+									<button>
+										<Plus size={18} color={defaultTheme['purple-dark']} />
+									</button>
+								</HandleQuantity>
+								<RemoveItemButton>
+									<Trash size={18} color={defaultTheme['purple-dark']} />
+									<div>REMOVER</div>
+								</RemoveItemButton>
+							</div>
+						</SelectedProductDetails>
+						<span>R$ 9,90</span>
+					</SelectedProduct>
+					<SelectedProduct>
+						<img src={latte} />
+						<SelectedProductDetails>
+							<span>Expresso Tradicional</span>
+							<div>
+								<HandleQuantity>
+									<button>
+										<Minus size={18} color={defaultTheme['purple-dark']} />
+									</button>
+									1
+									<button>
+										<Plus size={18} color={defaultTheme['purple-dark']} />
+									</button>
+								</HandleQuantity>
+								<RemoveItemButton>
+									<Trash size={18} color={defaultTheme['purple-dark']} />
+									<div>REMOVER</div>
+								</RemoveItemButton>
+							</div>
+						</SelectedProductDetails>
+						<span>R$ 9,90</span>
+					</SelectedProduct>
 				</CheckoutDetail>
 			</SelectedCoffeeSection>
 		</Container>

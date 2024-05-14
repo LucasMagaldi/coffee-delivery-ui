@@ -7,7 +7,7 @@ interface PaymentButtonProps {
 export const Container = styled.div`
     padding: 2rem 10rem;
     display: flex;
-    gap: 2rem;
+    gap: 8rem;
 `
 
 export const OrderSection = styled.div`
@@ -103,9 +103,68 @@ export const SelectedCoffeeSection = styled.div`
 `
 
 export const CheckoutDetail = styled.div`
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 5rem 5rem 2rem 5rem;
     background: ${props => props.theme['base-card']};
-    border-radius: 10px;
+    border-radius: 10px 40px 10px 40px;
     height: 28rem;
-    width: 40rem;
+    width: 32rem;
+`
+
+export const SelectedProduct = styled.div`
+    display: flex;
+    justify-content:space-between;
+    img {
+        height: 5rem;
+    }
+    padding-bottom: 2rem;
+    border-bottom: 1px solid ${props => props.theme['base-button']};;
+
+`
+
+export const SelectedProductDetails = styled.div`
+    display: flex;
+    flex-direction:column;
+    gap: 0.5rem;
+
+    div {
+        display: flex;
+        gap: 0.5rem;
+    }
+`
+
+export const HandleQuantity = styled.div`
+    width: 4rem;
+    height: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background:${props => props.theme['base-button']};
+    border: none;
+
+    button {
+        border: none;
+        display: flex;
+        background: none;
+    }
+`
+
+export const RemoveItemButton = styled.button`
+            display: flex;
+            border-radius: 5px;
+            gap: 0.5rem;
+            border: none;
+            background: ${props => props.theme['base-button']};
+            width: 6rem;
+            height: 2rem;
+            color: ${props => props.theme['base-text']};
+
+
+            align-items: center;
+            padding: 0.5rem;
+            font-size: 12px;
 `
