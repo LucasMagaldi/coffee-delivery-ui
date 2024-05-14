@@ -1,5 +1,5 @@
-import { Bank, CreditCard, CurrencyDollar, Ladder, MapPinLine, Minus, Money, Plus, Trash } from '@phosphor-icons/react';
-import { CheckoutDetail, Container, DeliveryDetail, Form, FormContent, HandleQuantity, HandleQuantityButton, Header, OrderSection, PaymentDetail, RemoveItem, RemoveItemButton, SelectedCoffeeSection, SelectedProduct, SelectedProductDetails } from './styles';
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Minus, Money, Plus, Trash } from '@phosphor-icons/react';
+import { CheckoutDetail, Container, DeliveryDetail, Form, FormContent, HandleQuantity, Header, OrderSection, PaymentDetail, RemoveItemButton, SelectedCoffeeSection, SelectedProduct, SelectedProductDetails } from './styles';
 import { defaultTheme } from '../../styles/themes/deafault';
 
 import z from 'zod'
